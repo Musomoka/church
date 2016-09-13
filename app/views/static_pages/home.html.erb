@@ -1,0 +1,41 @@
+ <div class="jumbotron">
+    <div class="col-md-11">
+      <h1>Welcome To The Church</h1>  
+     
+      <p>Welcom to the home of Church Minsitries. Hope you feel at home and enjoy your time here in the presence of God and all his people</p>
+    </div>
+        
+</div>
+     
+
+</div>
+<div class="container-fluid">
+    <div class ="row">
+        <div class="col-md-8">
+    
+            <%= link_to 'sermons',sermons_url, class:'btn btn-default' %>
+              <div class 'sermons'>
+               <% @sermons.last(5).each do |sermon| %>
+                <h1><%= sermon.title%></h1>
+                <p> <%= truncate sermon.body,length: 160 %></p>
+                <%end%>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <%= link_to 'People',people_url, class:'btn btn-default' %>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <%= link_to 'Upcoming',upcomings_url, class:'btn btn-default' %>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    
