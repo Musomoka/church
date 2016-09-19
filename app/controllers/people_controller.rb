@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:show, :edit, :update, :destroy]
+  before_action :set_person, only: [ :show, :edit, :update, :destroy]
 
   # GET /people
   # GET /people.json
@@ -69,6 +69,6 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:name, :title, :description)
+      params.require(:person).permit(:picture, :name, :title, :description)
     end
 end

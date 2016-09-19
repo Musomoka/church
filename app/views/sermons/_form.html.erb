@@ -1,29 +1,8 @@
-<%= form_for(@sermon) do |f| %>
-  <% if @sermon.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@sermon.errors.count, "error") %> prohibited this sermon from being saved:</h2>
-
-      <ul>
-      <% @sermon.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :scriptures %><br>
-    <%= f.text_area :scriptures %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
+<%= simple_form_for @sermon do |f| %>
+    <%= f.input :title %>
+    <%= f.input :scriptures %>
+    <%= f.input :body %>
+    <%= f.input :media %>
     <%= f.submit %>
-  </div>
+ 
 <% end %>

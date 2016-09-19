@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   
+  
   def home
     @sermons = Sermon.all
     @people = Person.all

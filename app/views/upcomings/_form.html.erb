@@ -1,33 +1,9 @@
-<%= form_for(@upcoming) do |f| %>
-  <% if @upcoming.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@upcoming.errors.count, "error") %> prohibited this upcoming from being saved:</h2>
-
-      <ul>
-      <% @upcoming.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :start %><br>
-    <%= f.text_field :start %>
-  </div>
-  <div class="field">
-    <%= f.label :end %><br>
-    <%= f.text_field :end %>
-  </div>
-  <div class="actions">
+<%= simple_form_for @upcoming do |f| %>
+      <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :start %>
+      <%= f.input :end %>
     <%= f.submit %>
-  </div>
+ 
 <% end %>
+

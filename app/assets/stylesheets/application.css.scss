@@ -10,8 +10,25 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+  *= require_self
  *= require_tree .
- *= require_self
+
+ *= require jquery.ui.datepicker
+
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+ 
+
+.profile{
+
+    height:25opx;
+    background-color:#FFFFFF;
+    margin-top:10px;
+}
+
+.first-box{padding:10px;background:#9C0;}
+.second-box{padding:10px; background:#39F;}
+.third-box{padding:10px;background:#F66;}
+.fourth-box{padding:10px;background:#6CC;}

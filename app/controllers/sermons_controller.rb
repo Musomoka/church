@@ -69,6 +69,6 @@ class SermonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sermon_params
-      params.require(:sermon).permit(:title, :scriptures, :body)
+      params.require(:sermon).permit(:media, :title, :scriptures, :body)
     end
 end

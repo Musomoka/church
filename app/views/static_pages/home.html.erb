@@ -1,18 +1,17 @@
- <div class="jumbotron">
-    <div class="col-md-11">
-      <h1>Welcome To The Church</h1>  
+
+     
+
+
+<div class="container">
+    <div class="jumbotron">
+   
+      <h2>Welcome To The Church<h2>  
      
       <p>Welcom to the home of Church Minsitries. Hope you feel at home and enjoy your time here in the presence of God and all his people</p>
     </div>
-        
-</div>
-     
-
-</div>
-<div class="container-fluid">
     <div class ="row">
         <div class="col-md-8">
-    
+          
             <%= link_to 'sermons',sermons_url, class:'btn btn-default' %>
               <div class 'sermons'>
                <% @sermons.last(5).each do |sermon| %>
@@ -23,7 +22,14 @@
         </div>
         
         <div class="col-md-4">
-            <%= link_to 'People',people_url, class:'btn btn-default' %>
+            <div class="span1 profile">
+                <%= link_to 'People',people_url, class:'btn btn-default' %>
+                <% @people.last(5).each do |people| %>
+                    <h2><%= people.title%></h2>  
+                    <h2><%= people.name %> <h2>
+                    <p> <%= image_tag people.picture.url(:small) %></p>
+                <%end%>
+            </div>
         </div>
     </div>
     

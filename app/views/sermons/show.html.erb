@@ -1,10 +1,15 @@
+ <div class="row col-md-6 col-md-offset-3 col-xs-12">
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Title:</strong>
   <%= @sermon.title %>
 </p>
-
+<audio id="<%= @sermon.media %>" controls>
+  <source src="<%= @sermon.media %>"></source>
+</audio>
 <p>
   <strong>Scriptures:</strong>
   <%= @sermon.scriptures %>
@@ -15,5 +20,8 @@
   <%= @sermon.body %>
 </p>
 
+
+
 <%= link_to 'Edit', edit_sermon_path(@sermon) %> |
 <%= link_to 'Back', sermons_path %>
+</div>

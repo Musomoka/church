@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 gem 'paperclip', '~> 5.1'
 gem 'bootstrap-sass'
 gem 'devise', '~> 4.2'
+gem 'simple_form'
+gem 'jquery-ui-sass-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

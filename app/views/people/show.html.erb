@@ -1,19 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @person.name %>
-</p>
+<div class="row">
+      
 
-<p>
-  <strong>Title:</strong>
-  <%= @person.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @person.description %>
-</p>
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+        <p id="notice"><%= notice %></p>
+    
+        <%=image_tag @person.picture.url(:small) %>
+        
+        <div class="col-md-8">
+          <p> 
+            <strong>Name:</strong>
+            <%= @person.name%>
+          </p>
+          
+          <p>
+            <strong>Title:</strong>
+            <%= @person.title %>
+          </p>
+          
+          <p>
+            <strong>Description:</strong>
+            <%= @person.description %>
+          </p>
+          
+         
+          <%= link_to 'Edit', edit_person_path(@person),class: ".btn btn-default" %> |
+          <%= link_to 'Back', people_path,class: ".btn btn-default" %>
+        
+   
+</div>
