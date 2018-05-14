@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
-  resources :upcomings
-  resources :people
   root 'static_pages#home'
-  resources :sermons
+
+
+  resources :users
+
+
+  resources :upcomings do 
+    resources :comments
+  end
+  
+  resources :sermons do
+    resources :comments
+  end
+
+  resources :people
+
   get 'static_pages/home'
 
   get 'static_pages/contacts'

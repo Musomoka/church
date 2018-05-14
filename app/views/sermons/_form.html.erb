@@ -1,8 +1,11 @@
-<%= simple_form_for @sermon do |f| %>
-    <%= f.input :title %>
-    <%= f.input :scriptures %>
-    <%= f.input :body %>
-    <%= f.input :media %>
-    <%= f.submit %>
+<div class= 'form-group'>
+        <%= simple_form_for @sermon do |f| %>
+        <%= f.input :title, class: 'form-control' %>
+       
+        <%= f.input :body, class: 'form-control' %>
+        <%= f.select :status, status_options,class: 'form-control'  %>
+        <%= f.input :media, class: 'form-control'  %>
+        <%= f.submit %>
  
-<% end %>
+    <% end %>
+</div>

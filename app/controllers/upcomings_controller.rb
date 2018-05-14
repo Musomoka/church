@@ -1,6 +1,6 @@
 class UpcomingsController < ApplicationController
   before_action :set_upcoming, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_commentable, only: [:show]
   # GET /upcomings
   # GET /upcomings.json
   def index
@@ -70,5 +70,9 @@ class UpcomingsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def upcoming_params
       params.require(:upcoming).permit(:title, :description, :start, :end)
+    end
+
+    def set_commentable
+      @commentable = Upcoming.find(params[:id])
     end
 end

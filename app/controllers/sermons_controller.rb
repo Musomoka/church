@@ -1,13 +1,13 @@
 class SermonsController < ApplicationController
   before_action :set_sermon, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_commentable, only: [:show]
   # GET /sermons
   # GET /sermons.json
   def index
-    @sermons = Sermon.all
+    @sermons = Sermon.paginate(:page => params[:page], :per_page => 10)
   end
 
-  # GET /sermons/1
+  # GET /sermons/1  
   # GET /sermons/1.json
   def show
   end
@@ -70,5 +70,11 @@ class SermonsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sermon_params
       params.require(:sermon).permit(:media, :title, :scriptures, :body)
+    end
+   
+
+   
+    def set_commentable
+        @commentable = Sermon.find(params[:id])
     end
 end

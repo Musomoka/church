@@ -1,36 +1,39 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
-  <div class="row">
+ 
+  
+  <div class="col-lg-12">
 
-  <!-- Blog Post Content Column -->
-   <div class="col-lg-8">
+  
+      <h1>Sermons</h1>
 
-<%= link_to 'New Sermon', new_sermon_path, class:'btn btn-default' %>
-<h1>Listing Sermons</h1>
-
-    <% @sermons.each do |sermon| %>
-    <div class="span8">
+        
+        <% @sermons.each do |sermon| %>
+        
+        <div class='col-lg-4'>
+          <div class='panel panel-default article-panel'> 
+                  
+              <h3 class= 'panel-heading'><%= link_to sermon.title, sermon_path(sermon) %></h3>
+            
+                <%= link_to (image_tag Faker::Avatar.image("sample piccture", "200x200", "jpg")), sermon_path(sermon)  %>
+              <div class='panel-body'>
+                <p><strong> <%= sermon.scriptures.truncate(10) %></strong></p>
+                <p><%= sermon.body.truncate(200) %></p>
+              </div>
+          
+              <%= link_to 'Read More..', sermon_path(sermon) %>
+              <br/>
+            </div>
+        </div> 
+            
+          <% end %>
+          
       
-    <div class="row">
-      <div class="span8">
-        <h4><%= sermon.title %></h4>
-        <h3><%= sermon.scriptures %></h3
-      </div>
+      <%= will_paginate @posts %>
     </div>
+</div> 
     
-        <div class="span6"> 
-          <p><%= sermon.body.truncate(120) %></p>
-        </div>
+  
     
-        <%= link_to 'Edit', edit_sermon_path(sermon), class:'btn btn-default' %>
-        <%= link_to 'Destroy', sermon, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-default' %>
-        </div>
      
-      
-    <% end %>
-    
-    
-  <div class="row">
-    
-     <%= link_to 'Upcoming',upcomings_url, class:'btn btn-default' %>
- </div>
+ 
