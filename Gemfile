@@ -44,6 +44,7 @@ group :development, :test do
   gem 'guard-livereload'
   gem 'better_errors'
   gem 'awesome_print'
+  
 end
 
 group :development do

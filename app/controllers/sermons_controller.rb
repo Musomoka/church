@@ -10,6 +10,7 @@ class SermonsController < ApplicationController
   # GET /sermons/1  
   # GET /sermons/1.json
   def show
+    
   end
 
   # GET /sermons/new
@@ -76,5 +77,6 @@ class SermonsController < ApplicationController
    
     def set_commentable
         @commentable = Sermon.find(params[:id])
+       
     end
 end
