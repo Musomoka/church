@@ -4,7 +4,7 @@ class SermonsController < ApplicationController
   # GET /sermons
   # GET /sermons.json
   def index
-    @sermons = Sermon.paginate(:page => params[:page], :per_page => 10)
+    @sermons = Sermon.paginate(:page => params[:page], :per_page => 9)
   end
 
   # GET /sermons/1  
