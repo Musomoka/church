@@ -22,16 +22,27 @@ class UsersController < ApplicationController
 
         @user = User.new(user_params)
         if @user.save
-           login @user
-           flash[:success] = "Welcome to the Sample App!"
-            redirect_to @user
+            UserMailer.account_activation(@user).deliver_now
+            flash[:info] = "Please check your email to activate your account."
+      
+            redirect_to root_path
         else
         render 'new'
         end
     end
 
     def edit 
-    
+    user = User.find_by(email: params[:email])
+        if user && !user.activated? && user.authenticated?(:activation, params[:id])
+          user.update_attribute(:activeted, true)
+          user.update_attribute(:activated_at, Time.zone.now)
+          login user
+          flash[:success] = 'Account activited'
+          redirect_to user
+        else 
+            flash[:danger] = "Invalid activation link"
+            redirect_to root_url
+        end
     end
 
     def update

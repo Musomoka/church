@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :sermons do
     resources :comments
   end
-
+  resources :account_activations, only: [:edit]
   resources :people
 
   get 'static_pages/home'
