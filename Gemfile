@@ -6,6 +6,8 @@ gem 'simple_form'
 gem 'jquery-ui-sass-rails'
 gem 'puma'
 gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 gem 'faker'
@@ -44,6 +46,7 @@ group :development, :test do
   gem 'guard-livereload'
   gem 'better_errors'
   gem 'awesome_print'
+  gem 'rails-controller-testing'
   
 end
 

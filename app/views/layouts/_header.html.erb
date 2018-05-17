@@ -1,12 +1,17 @@
+
+<title><%= yield(:title) %> | Church.com</title>
 <nav class="navbar navbar-default">
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <%if logged_in?%>
+    <a class="navbar-brand" href="#"><%=current_user.email%> </a>
+    <%else%>
+    <%= link_to 'Church.com',static_pages_home_url, class:"navbar-brand"%>
+  <%end%>
+ 
     <ul class="nav navbar-nav">
-      <li>
-        <%= link_to 'Church.com',static_pages_home_url, class:"navbar-brand"%>
-          </h3>
-      </li>
+      
       <li>
         <%= link_to 'Sermons',sermons_url, class:"navbar-brand"%>
       </li>
@@ -24,18 +29,20 @@
 
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
-      
+
+            <li><%= link_to "Users", users_path %></li>
             <li>
               <%= link_to "Profile", current_user %>
             </li>
             <li>
-              <%= link_to "Settings", '#' %>
+              <%= link_to "Settings", edit_user_path(current_user) %>
             </li>
             <li class="divider"></li>
             <li>
               <%= link_to "Log out", logout_path, method: :delete, data: { confirm: 'Are you sure?' }%>
              
-            </li>
+           
+           
 
       <% else %>
           <li>

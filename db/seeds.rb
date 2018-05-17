@@ -14,3 +14,12 @@ Sermon.all.each do |sermon|
             sermon.comments.create(body: Faker::BackToTheFuture.quote, user_id: 1 ) 
         end
     end
+    99.times do |n|
+        name  = Faker::Name.name
+        email = "example-#{n+1}@railstutorial.org"
+        password = "password"
+        User.create!(name:  name,
+                     email: email,
+                     password:              password,
+                     password_confirmation: password)
+      end
