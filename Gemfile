@@ -10,7 +10,8 @@ gem 'bootstrap-will_paginate'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
-gem 'faker'
+
+gem 'cancan'  
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -47,6 +48,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'awesome_print'
   gem 'rails-controller-testing'
+  gem 'faker'
   
 end
 

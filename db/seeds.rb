@@ -7,23 +7,3 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-100.times { Sermon.create(title: Faker::Book.title, body: Faker::Lorem.sentence(100, true, 20), scriptures: Faker::Lorem.sentence(10, true, 10))}  
-
-Sermon.all.each do |sermon|
-        10.times do
-            sermon.comments.create(body: Faker::BackToTheFuture.quote, user_id: 1 ) 
-        end
-    end
-
-
-99.times do |n|
-    name  = Faker::Name.name
-    email = "example-#{n+1}@railstutorial.org"
-    password = "password"
-    User.create!(name:  name,
-                 email: email,
-                 password:              password,
-                 password_confirmation: password,
-                 activated: true,
-                 activated_at: Time.zone.now)
-end

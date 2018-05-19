@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_17_084148) do
+ActiveRecord::Schema.define(version: 2018_05_18_093816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,9 @@ ActiveRecord::Schema.define(version: 2018_05_17_084148) do
     t.integer "media_file_size"
     t.datetime "media_updated_at"
     t.string "status"
+    t.bigint "user_id"
+    t.index ["created_at"], name: "index_sermons_on_created_at"
+    t.index ["user_id"], name: "index_sermons_on_user_id"
   end
 
   create_table "upcomings", force: :cascade do |t|
@@ -130,7 +133,10 @@ ActiveRecord::Schema.define(version: 2018_05_17_084148) do
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "sermons", "users"
 end

@@ -10,8 +10,6 @@ class UsersController < ApplicationController
     end
 
     def show 
-       
-        
     end
 
     def new
@@ -32,22 +30,10 @@ class UsersController < ApplicationController
     end
 
     def edit 
-    user = User.find_by(email: params[:email])
-        if user && !user.activated? && user.authenticated?(:activation, params[:id])
-          user.update_attribute(:activeted, true)
-          user.update_attribute(:activated_at, Time.zone.now)
-          login user
-          flash[:success] = 'Account activited'
-          redirect_to user
-        else 
-            flash[:danger] = "Invalid activation link"
-            redirect_to root_url
-        end
+    
     end
 
     def update
-        
-        
         if @user.update(user_params)
             flash[:success] = "Profile Updated"
             redirect_to @user

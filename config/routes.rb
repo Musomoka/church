@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get 'sessions/new'
   root 'static_pages#home'
 
@@ -20,12 +22,13 @@ Rails.application.routes.draw do
   end
   resources :account_activations, only: [:edit]
   resources :people
+  resources :password_resets, only: [:edit, :update, :new, :create]
 
-  get 'static_pages/home'
+  get 'home', to: 'static_pages#home', as: 'home'
 
-  get 'static_pages/contacts'
+  get 'contacts', to:'static_pages#contacts', as: 'contacts'
 
-  get 'static_pages/about'
+  get 'about', to: 'static_pages#about', as: 'about'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
