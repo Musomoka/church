@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gem 'paperclip'
 gem 'bootstrap-sass'
+
 gem 'devise' 
 gem 'simple_form'
 gem 'jquery-ui-sass-rails'

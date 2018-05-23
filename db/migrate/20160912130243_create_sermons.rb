@@ -1,4 +1,4 @@
-class CreateSermons < ActiveRecord::Migration
+class CreateSermons < ActiveRecord::Migration[4.2]
   def change
     create_table :sermons do |t|
       t.string :title

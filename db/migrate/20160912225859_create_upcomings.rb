@@ -1,4 +1,4 @@
-class CreateUpcomings < ActiveRecord::Migration
+class CreateUpcomings < ActiveRecord::Migration[4.2]
   def change
     create_table :upcomings do |t|
       t.string :title
