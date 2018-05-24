@@ -1,4 +1,4 @@
-class AddAttachmentMediaToSermons < ActiveRecord::Migration
+class AddAttachmentMediaToSermons < ActiveRecord::Migration[4.2]
   def self.up
     change_table :sermons do |t|
       t.attachment :media
