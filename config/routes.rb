@@ -1,32 +1,42 @@
 Rails.application.routes.draw do
-  get 'password_resets/new'
-  get 'password_resets/edit'
-  get 'sessions/new'
+  
+  devise_for :users, :controllers => {registrations: 'registrations'}
+
+ 
   root 'static_pages#home'
 
-
-  resources :users
-  
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
  
+  resources :sermons do 
+    resources :comments
+    resource :post_statuses
+  end
   
-  delete '/logout', to: 'sessions#destroy'
-
+  get 'status', to: 'sermons#status'
+  get 'sermons', to: 'sermons#index'
+  
   resources :upcomings do 
     resources :comments
   end
-  
-  resources :sermons do
+
+  resources :commentable do 
     resources :comments
   end
-  resources :account_activations, only: [:edit]
-  resources :people
-  resources :password_resets, only: [:edit, :update, :new, :create]
+    
+  
+  resources :assigns
+  resources :users do
+    resources :commentable
+    
+  end
 
+  get 'user_sermons', to: 'sermons#user_sermons'
+  
+
+  get 'users/id' => 'users#show', as: 'profile'
   get 'home', to: 'static_pages#home', as: 'home'
-
-  get 'contacts', to:'static_pages#contacts', as: 'contacts'
+  patch 'sermon/id', to: 'sermons#publish'
+  resources :contacts
+  get 'company_contact', to:'static_pages#contacts'
 
   get 'about', to: 'static_pages#about', as: 'about'
 

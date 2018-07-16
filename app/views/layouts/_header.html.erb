@@ -4,52 +4,53 @@
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-  <%if logged_in?%>
-    <a class="navbar-brand" href="#"><%=current_user.email%> </a>
-    <%else%>
+  
     <%= link_to 'Church.com',home_path, class:"navbar-brand"%>
-  <%end%>
+ 
  
     <ul class="nav navbar-nav">
+      <li>
+      <%= link_to 'Sermmons', sermons_path%>
+     
+      <li>
+       <li>
+      <%= link_to 'Events', upcomings_path%>
+     
+      <li>
+
+       
+        <%= link_to 'About',about_url%>
+      </li>
+
+      <%= render 'layouts/admin_nav' %>
+
+      <li>
+        <% if @contact_detail.nil?%>
+        <%= link_to 'Edit Contact', new_contact_url%> 
+        
+          <%else%>
+         <%= link_to 'contact',  contact_url(@contact_detail)%>
+         <%end%>
+      </li>
       
-      <li>
-        <%= link_to 'Sermons',sermons_url, class:"navbar-brand"%>
-      </li>
-      <li>
-        <%= link_to 'People',people_url, class:"navbar-brand"%>
-      </li>
-      <li>
-        <%= link_to 'About',about_url, class:"navbar-brand"%>
-      </li>
-      <li>
-        <%= link_to 'contact',  contacts_url, class:"navbar-brand"%>
-      </li>
-      <li></li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <% if logged_in? %>
+      <% if user_signed_in? %>
 
-            <li><%= link_to "Users", users_path %></li>
-            <li>
-              <%= link_to "Profile", current_user %>
-            </li>
-            <li>
-              <%= link_to "Settings", edit_user_path(current_user) %>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <%= link_to "Log out", logout_path, method: :delete, data: { confirm: 'Are you sure?' }%>
-             
+          <li> <%= link_to current_user.email, profile_path%>
+          </li>
            
-           
-
+            <li>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }%>
+            </li>
+  
       <% else %>
           <li>
-            <%= link_to "Log in", login_url %>
+            <%= link_to "Log in", user_session_url  %>
           </li>
           <li>
-            <%= link_to "Signup", new_user_path%>
+            <%= link_to "Signup",  new_user_registration_url%>
           </li>
 
       <% end %>
@@ -68,3 +69,7 @@
     <% end %>
 
 </div>
+
+
+
+

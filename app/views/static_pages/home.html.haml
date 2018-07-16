@@ -1,0 +1,31 @@
+
+
+.container
+  .row
+    %h1 Sermons
+    %p Latest sermons from all our ministers of the gospel...
+  .row
+    .col-md-5.col-lg-5
+      / artigo em destaque
+      .featured-article
+        %a{:href => "#"}
+          =image_tag featured_sermon  .avatar.url, width: '482', height: '350'
+        .block-title
+          %h2 Lorem ipsum dolor asit amet
+          %p.by-author
+            %small By Jhon Doe
+      / /.featured-article
+    .col-md-7.col-lg-7
+      %ul.media-list.main-list
+        - @sermons.each do |sermon| 
+         
+          %li
+            = image_tag  sermon.avatar.url, width: '150', height: '90'
+            %a.pull-left{:href => "#"}
+              %img.media-object{:alt => "...", :src => "http://placehold.it/150x90"}/
+            .media-body
+              %h4.media-heading Lorem ipsum dolor asit amet
+              %p.by-author By Jhon Doe
+       
+
+  

@@ -69,7 +69,7 @@ class UpcomingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def upcoming_params
-      params.require(:upcoming).permit(:title, :description, :start, :end)
+      params.require(:upcoming).permit(:title, :description, :start, :end, :avatar)
     end
 
     def set_commentable

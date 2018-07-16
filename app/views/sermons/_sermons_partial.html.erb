@@ -1,0 +1,42 @@
+<div class='row'>
+      <div class='col-lg-11 col-offset-1'>
+        <section class="Users Posts">
+
+          <h3> Sermons </h3>
+          <%= link_to "Create New Sermon" , new_sermon_path, class: "btn btn-success" %>
+          <% @user.sermons.each do |serm| %>
+            <table class="table col-lg-10">
+              <thead>
+                <tr>
+                
+                  <th scope="col-md-4">Title</th>
+                  <th scope="col-md-4"> created</th>
+                  <th scope="col-md-2">Status</th>
+
+                  <th scope="col-md-2">Actions</th>
+                </tr>
+                <tbody>
+                  
+                  
+                    <th scope="col">
+                      <%=link_to serm.title, sermon_path(serm)%>
+                    </th>
+                    <th scope="col">
+                      <%=serm.created_at%>
+                    </th>
+                    <th scope="col">
+                      <%=serm.status%>
+                    </th>
+                    <th class="btn-group" role="group">
+                      
+                      <%= link_to 'Edit', edit_sermon_path(serm), class: 'btn btn-default'%>
+                  </tr>
+                </tbody>
+            </table>
+            <%end%>
+
+
+
+        </section>
+      </div>
+    </div>

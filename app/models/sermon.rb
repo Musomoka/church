@@ -1,9 +1,22 @@
 class Sermon < ActiveRecord::Base
- has_attached_file :media,  default_url: "/media/:style/missing.png"
- validates_attachment_content_type :media, :content_type => ['audio/mpeg']
+  belongs_to :user
+  has_many :comments, as: :commentable
+  has_many :post_statuses
+  accepts_nested_attributes_for :post_statuses
+  mount_uploader :avatar, AvatarUploader
+  validates :title,  :uniqueness => true
+  validates_presence_of :user, :avatar
 
- has_many :comments, as: :commentable
- belongs_to :users
+  default_scope -> { order( created_at: :desc) }
+  
+  scope :descending, -> { order( created_at: :desc) }
+  
+  scope :published, -> { where status: 'published' }
+  scope :editing, -> {where status: 'editing'}
+  scope :review, -> { where status: 'review'}
+  scope :review, -> {where status: 'feature'}
 
- default_scope -> { order( created_at: :desc) }
+  
+
+ 
 end

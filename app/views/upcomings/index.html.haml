@@ -1,0 +1,45 @@
+
+.container
+  .row
+    .col-xs-12.col-sm-offset-2.col-sm-8
+     
+
+      %ul.event-list
+        -@upcomings.each do |event|
+          
+          %li
+            %time{:datetime => "2018-10-29"}
+              %span.day=  start_date(event).strftime("%d")
+              %span.month= start_date(event).strftime("%b")
+              %span.year= start_date(event).strftime("%y") 
+            
+            = link_to (image_tag event.avatar.url, height: '100', width: '100'), upcoming_url(event)
+                
+            .info
+              .row
+                .col-sm-10
+                  %h2.title= event.title
+                .col-sm-2
+                
+              .row
+                .col-sm-3 Start:
+                .col-sm-9= event.start
+              .row
+                .col-sm-3 End:
+                .col-sm-9= event.start
+              .row
+                .col-sm-3 Description:
+                .col-sm-9= event.description
+              
+            .social
+              %ul
+                %li.facebook{:style => "width:33%;"}
+                  %a{:href => "#facebook"}
+                    %span.fa.fa-facebook
+                %li.twitter{:style => "width:34%;"}
+                  %a{:href => "#twitter"}
+                    %span.fa.fa-twitter
+                %li.google-plus{:style => "width:33%;"}
+                  %a{:href => "#google-plus"}
+                    %span.fa.fa-soundcloud
+          

@@ -1,28 +1,36 @@
 source 'https://rubygems.org'
-gem 'paperclip'
+
 gem 'bootstrap-sass'
-gem 'devise' 
+ 
+
+gem 'active_admin_role'
 gem 'simple_form'
+gem 'carrierwave'
+gem 'bootstrap-tagsinput-rails'
+
 gem 'jquery-ui-sass-rails'
 gem 'puma'
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
-
+gem 'kaminari'
+gem 'haml'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
-
-gem 'cancan'  
+gem 'phony', '~> 2.16', '>= 2.16.4'
+gem 'cancancan'
+gem 'rolify'
+gem 'devise'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails'
+gem 'devise-bootstrap-views'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem 'image_processing', '~> 1.2'
+gem "mini_magick"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

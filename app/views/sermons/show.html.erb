@@ -1,41 +1,51 @@
- <div clas='container'>
-        <div class="row col-md-12  col-xs-12">
+<div clas='container'>
 
+  <div class=" col-md-8 col-offset-2 col-xs-8">
+    <h2>
 
-        <p id="notice"><%= notice %></p>
-
-        <p>
-          <strong>Title:</strong>
-          <%= @sermon.title %>
-        </p>
-        <audio id="<%= @sermon.media %>" controls>
-          <source src="<%= @sermon.media %>"></source>
-        </audio>
-        <p>
-          <strong>Scriptures:</strong>
-          <%= @sermon.scriptures %>
-        </p>
-
-        <p>
-          <strong>Body:</strong>
-          <%= @sermon.body %>
-        </p>
+      <%= @sermon.title %>
+    </h2>
 
 
 
-        <%= link_to 'Edit', edit_sermon_path(@sermon) %> |
-        <%= link_to 'Back', sermons_path %>
-        </div>
+    <%= image_tag(@sermon.avatar.url,width: '300', height: '300', class: 'img-fluid') %>
+
+      <p>
+        <strong>Scriptures:</strong>
+        <%= @sermon.scriptures %>
+      </p>
+
+      <p>
+        <strong>Body:</strong>
+        <%= @sermon.body %>
+      </p>
+
+
+      <% if can? :update, @sermon %>
+        <%= link_to 'Edit', edit_sermon_path(@sermon) %>
+          <%end%>
+            <%= link_to 'Back', sermons_path %>
   </div>
+</div>
 
-  <div class='container'>
+<div class='container'>
   <div class="row col-md-12  col-xs-12">
 
-      <div class='row'>
-        <%= render partial: "comments/form", locals: {commentable: @sermon} %>
-      </div>
-      <div class='row'>
-        <%= render partial: "comments/comments", locals: {commentable: @sermon} %>
-      </div>
+    <div class='row'>
+      <%= render partial: "comments/form", locals: {commentable: @sermon} %>
+    </div>
+    <div class='row'>
+      <%= render partial: "comments/comments", locals: {commentable: @sermon} %>
+    </div>
   </div>
-  </div>
+
+
+
+</div>
+
+
+<% if can? "update", @sermon%>
+<button onclick="toggleForm()">Click Me</button>
+      <%=render 'form'%>
+ 
+  <%end%>

@@ -1,0 +1,28 @@
+.container
+
+  .col-lg-8
+    %h1 Sermons
+    .btn-group
+      =link_to 'Create', new_sermon_url, {class: 'btn btn-success'}
+    %table.table
+      %thead
+        %tr
+          %th{:rowspan => 3} Sermon
+          %th Title
+          %th Status
+          %th{:rowspan => 2}
+      %tbody
+        - @sermons.each do |sermon|
+         
+          %tr  
+            
+            %td.align-top= link_to (image_tag sermon.avatar.url, class: 'img-thumbnail'), sermon_url(sermon)
+            %td.align-bottom= link_to sermon.title, sermon_url(sermon)
+            %td.align-bottom= sermon.status
+            %td.btn-group{:role => 'group'}
+              =link_to 'Post', sermon_url(sermon), class: 'btn btn-default'
+              =link_to 'Status Edit', edit_sermon_post_statuses_path(sermon), class: 'btn btn-primary'
+              =link_to 'Delete', sermon, :method => :delete,remote: true, :confirm => "Are you sure?",class: 'btn btn-danger'
+   
+              
+   

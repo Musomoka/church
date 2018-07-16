@@ -1,0 +1,30 @@
+
+
+<% @users.each do |user| %>
+
+
+<%unless user.has_role 'author'%>
+<table>
+<Title>Authors</Title>
+  
+  <thead>
+    <tr>
+      <tr>Email</th>
+      <th>Name</th>
+      <th>Status> </th>
+    </tr>
+  </thead>
+
+  
+
+<tbody>
+  <tr>
+    <td><%= user.email</tr></td>
+    <td> user.name</td>
+    <td></td>
+  </tr>
+
+</tbody>
+</table>
+<%end%>
+

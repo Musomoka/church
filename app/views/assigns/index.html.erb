@@ -1,0 +1,17 @@
+
+<% @users.each do |user| %>
+<h3>Authors</h3>
+  <%if user.has_role? 'author'%>
+    <h4><%=user.email%> </h4>
+  <%end%>
+
+<%if user.has_role? 'admin'%>
+    <h3>  Admins </h3>
+    <h4> <%= user.email %></h4>
+  <%end%>
+
+  <%if user.has_role? 'publishers'%>
+    <h3>  Publishers </h3>
+    <h4> <%= user.email %></h4>
+  <%end%>
+<% end %>

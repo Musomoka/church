@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Church.org
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+   
+    = render 'layouts/header'
+    -if notice
+      %p.notice
+        = notice
+    -if alert    
+      %p.alert
+        = alert
+    .container-fluid
+      .col-lg-12
+     
+        = yield
+    
+   

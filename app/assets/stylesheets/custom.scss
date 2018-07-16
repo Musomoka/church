@@ -11,6 +11,23 @@
 
   /* miscellaneous */
   
+ .navbar {
+   border-bottom-width: 2px;
+   border-bottom-color: skyblue;
+   margin-bottom: 60px;
+   padding: 10px;
+  font-family: 'Merriweather', serif;
+  font-size: 1.5em;
+ }
+ .navbar-default .navbar-brand {
+  color: #569ab7;
+}
+  /*Admin Header*/
+
+  .admin-header {
+    padding-top: -5px;
+  }
+
   .debug_dump {
     clear: both;
     float: left;

@@ -1,8 +1,9 @@
 <%= simple_form_for @upcoming do |f| %>
-      <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :start %>
-      <%= f.input :end %>
+      <%= f.input :title, class: 'form-control' %>
+    <%= f.input :description, class: 'form-control' %>
+    <%= f.date_field :start %>
+    <%= f.date_field :end %>
+    <%= f.input :avatar, class: 'form-control'  %>
     <%= f.submit %>
  
 <% end %>

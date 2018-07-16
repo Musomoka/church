@@ -1,0 +1,31 @@
+
+    
+    <% if current_user %>
+      
+   
+      
+      <%if current_user.has_role? "author"%>
+      <li>
+          
+          <%= link_to 'My Sermons',user_sermons_path%>
+        
+      </li>
+      <%end%>
+      <li>  <%= link_to "Add Event", new_upcoming_url %>
+        </li>
+      <li>
+        <%if can? :update, Sermon %>
+        <%= link_to 'Create New sermon', new_sermon_url%>
+        <%end%>
+      </li>
+     <% end %>
+   
+
+
+
+
+ 
+
+
+
+

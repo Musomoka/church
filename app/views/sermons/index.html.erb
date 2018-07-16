@@ -6,7 +6,7 @@
 
   
       <h1>Sermons</h1>
-         <%= will_paginate @sermons %>
+        
         
         <% @sermons.each do |sermon| %>
         
@@ -14,10 +14,9 @@
           <div class='panel panel-default article-panel'> 
                   
               <h3 class= 'panel-heading'><%= link_to sermon.title, sermon_path(sermon) %></h3>
-            
-                <%= link_to (image_tag Faker::Avatar.image("sample piccture", "200x200", "jpg")), sermon_path(sermon)  %>
+          
               <div class='panel-body'>
-                <p><strong> <%= sermon.scriptures.truncate(10) %></strong></p>
+      
                 <p><%= sermon.body.truncate(200) %></p>
               </div>
           
@@ -29,7 +28,7 @@
           <% end %>
           
       
-      <%= will_paginate @sermons %>
+     
     </div>
 </div> 
     

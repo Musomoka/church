@@ -1,35 +1,66 @@
 class SermonsController < ApplicationController
-  before_action :set_sermon, only: [:show, :edit, :update, :destroy]
+  
+  before_action :set_sermon, only: [:show, :edit, :update, :destroy, :publish]
   before_action :set_commentable, only: [:show]
+  before_action :set_user
+  
+  load_and_authorize_resource 
+  action_methods
   # GET /sermons
   # GET /sermons.json
+  
+
   def index
-    @sermons = Sermon.paginate(:page => params[:page], :per_page => 9)
+    
+      @sermons = Sermon.all
+      
+    
+  end   
+
+  def user_sermons
+    
+    @sermons = Sermon.where(:user_id => current_user.id)
+    
   end
 
   # GET /sermons/1  
   # GET /sermons/1.json
   def show
+    #@comment = @commentable.comments.build
+    @comments = @commentable.comments
+    
     
   end
 
+  
+
+  
+
   # GET /sermons/new
   def new
-    @sermon = Sermon.new
+    @sermon = current_user.sermons.build
+    @sermon.user_id = current_user.id
+   
   end
 
   # GET /sermons/1/edit
   def edit
+    
+
   end
 
   # POST /sermons
   # POST /sermons.json
   def create
-    @sermon = Sermon.new(sermon_params)
-
+    @sermon = current_user.sermons.build(sermon_params)
     respond_to do |format|
+
       if @sermon.save
-        format.html { redirect_to @sermon, notice: 'Sermon was successfully created.' }
+        @sermon.update_attribute(:status, "Review" )
+        current_user.add_role :sermon, Sermon.find(@sermon.id)
+          
+       
+        format.html { redirect_to request.original_url , notice: 'Sermon was successfully created.' }
         format.json { render :show, status: :created, location: @sermon }
       else
         format.html { render :new }
@@ -43,7 +74,7 @@ class SermonsController < ApplicationController
   def update
     respond_to do |format|
       if @sermon.update(sermon_params)
-        format.html { redirect_to @sermon, notice: 'Sermon was successfully updated.' }
+        format.html { redirect_to request.original_url, notice:'Sermon was successfully updated.' }
         format.json { render :show, status: :ok, location: @sermon }
       else
         format.html { render :edit }
@@ -62,6 +93,13 @@ class SermonsController < ApplicationController
     end
   end
 
+  def featured
+    @first_feature 
+    @second_feature
+    @third_feature
+    @fourth_feature
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sermon
@@ -70,7 +108,7 @@ class SermonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sermon_params
-      params.require(:sermon).permit(:media, :title, :scriptures, :body)
+      params.require(:sermon).permit( :status, :user_id,:title, :scriptures, :body, :avatar)
     end
    
 
@@ -79,4 +117,23 @@ class SermonsController < ApplicationController
         @commentable = Sermon.find(params[:id])
        
     end
+
+    def set_user
+      @user = current_user
+    end
+
+    
+    
+
+    
+
+
+
+
+      
+
+
+    
+
+    
 end
