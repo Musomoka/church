@@ -1,24 +1,23 @@
-
-    
-    <% if current_user %>
-      
-   
-      
-      <%if current_user.has_role? "author"%>
-      <li>
-          
-          <%= link_to 'My Sermons',user_sermons_path%>
-        
-      </li>
-      <%end%>
-      <li>  <%= link_to "Add Event", new_upcoming_url %>
+ 
+<% if current_user %>
+  <li class="dropdown">
+    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <% if current_user.has_role? "author"%>
+        <li>          
+            <%= link_to 'My Sermons',user_sermons_path%>         
         </li>
+      <% end %>
+      <li>  <%= link_to "Add Event", new_upcoming_url %>
+      </li>
       <li>
         <%if can? :update, Sermon %>
-        <%= link_to 'Create New sermon', new_sermon_url%>
+          <%= link_to 'Create New sermon', new_sermon_url%>
         <%end%>
       </li>
-     <% end %>
+    </ul>
+  </li>        
+<% end %>
    
 
 
